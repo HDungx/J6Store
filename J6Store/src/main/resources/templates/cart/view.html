@@ -3,7 +3,39 @@
 
 <body>
     <main>
-        <h1>CART VIEW</h1>
+        <div class="card">
+            <div class="card-header">SHOPPING CART</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in cart.items">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price | number:2}}</td>
+                        <td> <input type="number" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" min="1" style="width: 50px;"></td>
+                        <td>{{item.qty*item.price | number:2}}</td>
+                        <td>
+                            <button ng-click="cart.remove(item.id)" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card-footer">
+                <button ng-click="cart.clear()" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Clear</button>
+                <a th:href="@{/order/checkout}" class="btn btn-primary">
+                    <i class="fa-solid fa-hand-point-right"></i> Checkout
+                </a>
+            </div>
+        </div>
     </main>
 </body>
 

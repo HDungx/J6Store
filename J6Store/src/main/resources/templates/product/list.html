@@ -2,9 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
 
 <body>
-    <main>
-        <h1>PRODUCT LIST</h1>
+    <main class="row">
+        <div th:each="p:${items}" class="col-sm-4">
+        	<div class="card text-center">
+                <div class="card-header">
+                    <div class="card-title" th:utext="${p.name}"></div>
+                </div>
+                <div class="card-body">
+                    <a th:href="@{|/product/detail/${p.id}|}">
+                        <img th:src="@{|/images/${p.image}|}" style="max-width: 95%; height: 150px;">
+                    </a>
+                </div>
+                <div class="card-footer text-right">
+                    <b>$[[${p.price}]]</b>
+                    <button th:attr="ng-click=@{|cart.add(${p.id})|}"  class="btn btn-success" ><i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+        	</div>
+        </div>
     </main>
 </body>
 
-</html>
+</html> 
