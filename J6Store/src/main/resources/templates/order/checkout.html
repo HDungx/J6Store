@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <body>
-    <main>
-        <h1>ORDER CHECKOUT</h1>
-    </main>
+	<main>
+		<div th:replace="~{/cart/view :: shopping_cart}"></div>
+		<br>
+		<div class="card">
+		   <div class="card-header" style="color: blue; font-weight: bold;">ORDER PURCHASING</div>
+		   <div class="card-body">
+			   <div class="row">
+				   <div class="form-group col-sm-6">
+					   <div>Purchaser:</div>
+					   <div class="form-control" id="username" th:text="${#authentication.principal.username}"></div>
+				   </div>
+				   <div class="form-group col-sm-6">
+					   <div>Order Date:</div>
+					   <div class="form-control" >{{order.createDate | date:'dd-MM-yyyy'}}</div>
+				   </div>
+			   </div>
+			   <div class="row">
+				   <div class="form-group col-sm-12">
+					   <div>Shipping Address:</div>
+					   <textarea ng-model="order.address" class="form-control"></textarea>
+				   </div>
+			   </div>
+		   </div>
+		   <div class="card-footer">
+			   <button ng-click="order.purchase()" class="btn btn-success">Purchase</button>
+		   </div>
+	   </div>
+	</main>
 </body>
 
 </html>
