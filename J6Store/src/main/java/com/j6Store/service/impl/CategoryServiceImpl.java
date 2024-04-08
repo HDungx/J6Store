@@ -1,4 +1,4 @@
-package com.j6Store.impl;
+package com.j6Store.service.impl;
 
 import java.util.List;
 

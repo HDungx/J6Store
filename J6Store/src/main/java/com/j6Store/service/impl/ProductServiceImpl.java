@@ -1,4 +1,4 @@
-package com.j6Store.impl;
+package com.j6Store.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +29,25 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> findByCategoryId(String cid) {
 		return pdao.findByCategoryId(cid);
 	}
+
+	@Override
+	public Product create(Product product) {
+		return pdao.save(product);
+	}
+
+	@Override
+	public Product update(Product product) {
+		// TODO Auto-generated method stub
+		return pdao.save(product);	
+	}
+
+	@Override
+	public void delete(Integer id) {
+		pdao.deleteById(id);
+	}
+
+	
+
 
 	
 }
