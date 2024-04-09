@@ -37,6 +37,7 @@ public class ProductRestController {
 	public Product create(@RequestBody Product product) {
 		return productService.create(product);
 	}
+	
 	@PutMapping("{id}")
 	public Product update(@PathVariable("id")Integer id,@RequestBody Product product) {
 		return productService.update(product);
