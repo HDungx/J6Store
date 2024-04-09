@@ -14,7 +14,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="item in items">
+			<tr ng-repeat="item in pager.items">
 				<td>{{item.id}}</td>
 				<td>{{item.name}}</td>
 				<td>{{item.price|number:2}}</td>
@@ -31,19 +31,17 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="card-footer">
-		<button class="btn btn-danger">
-			<b class="glyphicon glyphicon-hand-up"></b>
+	<div class="card-footer text-center">
+		<button class="btn btn-danger" ng-click="pager.first()">
+			<<
 		</button>
-		<button class="btn btn-primary">
-			<b class="glyphicon glyphicon-hand-left"></b>
+		<button class="btn btn-primary" ng-click="pager.previous()">Prev</button>
+		<button class="btn btn-success">{{pager.page + 1}} of {{pager.count}} </button>
+		<button class="btn btn-primary" ng-click="pager.next()">
+			<b class="glyphicon glyphicon-hand-right">></b>
 		</button>
-		<button class="btn btn-success">1 of 15 </button>
-		<button class="btn btn-primary">
-			<b class="glyphicon glyphicon-hand-right"></b>
-		</button>
-		<button class="btn btn-danger">
-			<b class="glyphicon glyphicon-hand-down"></b>
+		<button class="btn btn-danger"ng-click="pager.last()">
+			<b class="glyphicon glyphicon-hand-down">>></b>
 		</button>
 	</div>
 </div>
